@@ -1,0 +1,6 @@
+@FinalTalabatProject_HostAddress = http://localhost:5118
+
+GET {{FinalTalabatProject_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

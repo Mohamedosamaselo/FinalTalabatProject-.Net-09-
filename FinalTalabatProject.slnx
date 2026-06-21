@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/Core/">
+    <Project Path="LinkDev.Talabat.Application.Abstraction/LinkDev.Talabat.Application.Abstraction.csproj" />
+    <Project Path="LinkDev.Talabat.Application/LinkDev.Talabat.Application.csproj" />
+    <Project Path="LinkDev.Talabat.Domain/LinkDev.Talabat.Domain.csproj" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="LinkDev.Talabat.Infrastructure/LinkDev.Talabat.Infrastructure.csproj" />
+    <Project Path="LinkDev.Talabat.Persistence/LinkDev.Talabat.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="FinalTalabatProject/FinalTalabatProjectWebApis.csproj" />
+  </Folder>
+  <Folder Name="/UI/" />
+</Solution>
