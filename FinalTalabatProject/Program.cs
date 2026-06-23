@@ -1,6 +1,5 @@
+using FinalTalabatProjectWebApis.Extentions;
 using LinkDev.Talabat.Persistence;
-using LinkDev.Talabat.Persistence._Data;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,36 +17,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-#region Update database and seed data
+#region Update Database and Data seeding
 
-using var scope = app.Services.CreateAsyncScope();
+await app.InitializeStoreContextAsync(); // Update All Pending Migrations and Seed Data in side Extenction Method to webApplication
 
-var service = scope.ServiceProvider;
-
-var context = service.GetRequiredService<StoreContext>();
-
-var loggerFactory = service.GetRequiredService<ILoggerFactory>();
-
-try
-{
-    var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
-
-    if (pendingMigrations.Any())
-        await context.Database.MigrateAsync();
-
-    // seed data
-    await StoreContextSeed.SeedAsync(context, loggerFactory);
-}
-catch (Exception ex)
-{
-    var logger = loggerFactory.CreateLogger<Program>();
-
-    logger.LogError(ex,
-                     "An error occurred during Migrations or the data seeding ."
-        );
-}
-
-#endregion Update database and seed data
+#endregion Update Database and Data seeding
 
 // Configure the HTTP request pipeline.
 
