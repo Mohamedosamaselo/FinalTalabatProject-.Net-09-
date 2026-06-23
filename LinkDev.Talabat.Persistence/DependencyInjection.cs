@@ -10,10 +10,10 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services,
                                                             IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("StoreContext") ??
-            throw new InvalidOperationException(
+        var connectionString =
+    configuration.GetConnectionString("StoreContext")
+    ?? throw new InvalidOperationException(
         "Connection string 'StoreContext' not found.");
-
         services.AddDbContext<StoreContext>(options =>
         {
             options.UseSqlServer(connectionString);

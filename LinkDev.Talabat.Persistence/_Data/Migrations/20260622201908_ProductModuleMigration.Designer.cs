@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LinkDev.Talabat.Persistence._Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20260621163833_ProductModuleMigration")]
+    [Migration("20260622201908_ProductModuleMigration")]
     partial class ProductModuleMigration
     {
         /// <inheritdoc />

@@ -10,34 +10,44 @@ builder.Services.AddControllers();
 
 builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistence Layer Services
 
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
 #endregion Configure Services
 
 var app = builder.Build();
 
-#region Update database
+#region Update database and seed data
 
-using var scope = app.Services.CreateAsyncScope();// 01 create scpoe
-var service = scope.ServiceProvider;//02 get the service provider from the scope to ask for the StoreContext instance
-var context = service.GetRequiredService<StoreContext>();//03 Ask clr for the scoped instance of StoreContext explicitly
+using var scope = app.Services.CreateAsyncScope();
 
-var loggerFactory = service.GetRequiredService<ILoggerFactory>();//04 get the logger factory to create a logger instance
+var service = scope.ServiceProvider;
+
+var context = service.GetRequiredService<StoreContext>();
+
+var loggerFactory = service.GetRequiredService<ILoggerFactory>();
+
 try
 {
     var pendingMigrations = await context.Database.GetPendingMigrationsAsync();
 
-    if (pendingMigrations != null)
+    if (pendingMigrations.Any())
         await context.Database.MigrateAsync();
+
+    // seed data
+    await StoreContextSeed.SeedAsync(context, loggerFactory);
 }
 catch (Exception ex)
 {
     var logger = loggerFactory.CreateLogger<Program>();
 
     logger.LogError(ex,
-                     "An error occurred during application initialization."
+                     "An error occurred during Migrations or the data seeding ."
         );
 }
 
-#endregion Update database
+#endregion Update database and seed data
 
 // Configure the HTTP request pipeline.
 
@@ -48,6 +58,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 #endregion Middlewares
 
