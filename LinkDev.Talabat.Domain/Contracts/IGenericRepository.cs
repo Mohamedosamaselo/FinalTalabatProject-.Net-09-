@@ -1,0 +1,20 @@
+﻿namespace LinkDev.Talabat.Domain.Contracts;
+
+public interface IGenericRepository<TEntity, TKey>
+    where TEntity : BaseEntity<TKey>
+    where TKey : IEquatable<TKey>
+{
+    Task<IReadOnlyList<TEntity>> GetAllAsync();
+
+    Task<TEntity?> GetByIdAsync(TKey id);
+
+    Task AddAsync(TEntity entity);
+
+    void Update(TEntity entity);
+
+    void Delete(TEntity entity);
+
+    Task<bool> AnyAsync(TKey id);
+
+    Task<int> SaveChangesAsync();
+}
