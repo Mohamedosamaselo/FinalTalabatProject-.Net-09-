@@ -1,7 +1,6 @@
 ﻿namespace LinkDev.Talabat.Domain.Common;
 
-public abstract class BaseAuditableEntity<TKey> : BaseEntity<TKey>
-    where TKey : IEquatable<TKey>
+public abstract class BaseAuditableEntity<TKey> : BaseEntity<TKey> where TKey : IEquatable<TKey>
 {
     public string CreatedBy { get; set; }
 
