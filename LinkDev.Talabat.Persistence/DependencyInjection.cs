@@ -20,6 +20,8 @@ public static class DependencyInjection
 
         services.AddScoped<IStoreContextInitilazer, StoreContextInitializer>();
 
+        services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
         return services;
     }
 }

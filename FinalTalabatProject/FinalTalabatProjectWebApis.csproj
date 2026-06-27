@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LinkDev.Talabat.Application\LinkDev.Talabat.Application.csproj" />
     <ProjectReference Include="..\LinkDev.Talabat.Persistence\LinkDev.Talabat.Persistence.csproj" />
   </ItemGroup>
 

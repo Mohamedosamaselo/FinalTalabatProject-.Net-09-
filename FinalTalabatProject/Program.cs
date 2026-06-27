@@ -1,4 +1,5 @@
 using FinalTalabatProjectWebApis.Extentions;
+using LinkDev.Talabat.Application;
 using LinkDev.Talabat.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistence Layer Services
+
+builder.Services.AddApplicationServices();
 
 builder.Services.AddEndpointsApiExplorer();
 
