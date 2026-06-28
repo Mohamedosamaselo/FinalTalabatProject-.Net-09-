@@ -4,7 +4,7 @@ public interface IGenericRepository<TEntity, TKey>
     where TEntity : BaseEntity<TKey>
     where TKey : IEquatable<TKey>
 {
-    Task<IReadOnlyList<TEntity>> GetAllAsync();
+    Task<IReadOnlyList<TEntity>> GetAllAsync(bool withTracking = false);
 
     Task<TEntity?> GetByIdAsync(TKey id);
 

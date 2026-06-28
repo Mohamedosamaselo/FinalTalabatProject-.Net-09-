@@ -12,8 +12,22 @@ public class GenericRepositary<TEntity, TKey>(StoreContext _dbContext) : IGeneri
 {
     private readonly StoreContext dbContext = _dbContext;
 
-    public async Task<IReadOnlyList<TEntity>> GetAllAsync()
-       => await this.dbContext.Set<TEntity>().ToListAsync();
+    public async Task<IReadOnlyList<TEntity>> GetAllAsync(bool withTracking = false)
+    {
+        if (typeof(TEntity) == typeof(Product))
+        {
+            if (withTracking)
+                return await this.dbContext.Set<TEntity>().Include(p => (p as Product)!.Brand).Include(p => (p as Product)!.Category).ToListAsync();
+            else
+                return await this.dbContext.Set<TEntity>().Include(p => (p as Product)!.Brand).Include(p => (p as Product)!.Category).AsNoTracking().ToListAsync();
+        }
+        else
+            return withTracking
+                ? await this.dbContext.Set<TEntity>().ToListAsync()
+                : await this.dbContext.Set<TEntity>().AsNoTracking().ToListAsync();
+
+        //=> await this.dbContext.Set<TEntity>().ToListAsync();
+    }
 
     public async Task<TEntity?> GetByIdAsync(TKey id)
         => await this.dbContext.Set<TEntity>().FindAsync(id);

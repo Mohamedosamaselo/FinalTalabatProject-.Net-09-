@@ -1,8 +1,6 @@
-using FinalTalabatProjectWebApis.Controllers.Base;
 using FinalTalabatProjectWebApis.Extentions;
 using LinkDev.Talabat.Application;
 using LinkDev.Talabat.Persistence;
-using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +13,9 @@ builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistenc
 
 builder.Services.AddApplicationServices();
 
-// Register Swagger
+//  Swagger Configuration
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
 #endregion Configure Services
