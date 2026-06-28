@@ -9,6 +9,7 @@
     <Project Path="LinkDev.Talabat.Persistence/LinkDev.Talabat.Persistence.csproj" />
   </Folder>
   <Folder Name="/Presentation/">
+    <Project Path="Final.TalabatProject.WebApis.Controllers/Final.TalabatProject.WebApis.Controllers.csproj" Id="973cd117-fbf4-4e52-841c-e1995fbdf8f1" />
     <Project Path="FinalTalabatProject/FinalTalabatProjectWebApis.csproj" />
   </Folder>
   <Folder Name="/UI/" />

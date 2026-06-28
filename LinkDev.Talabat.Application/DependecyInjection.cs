@@ -13,8 +13,6 @@ public static class DependecyInjection
         // Option 1: Add profile instance
         services.AddAutoMapper(cfg => cfg.AddProfile(new MappingProfile()));
 
-        services.AddScoped(typeof(IProductService), typeof(ProductService));
-
         services.AddScoped(typeof(IServiceManager), typeof(ServiceManager));
 
         return services;

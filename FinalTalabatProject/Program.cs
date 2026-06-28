@@ -1,19 +1,22 @@
+using FinalTalabatProjectWebApis.Controllers.Base;
 using FinalTalabatProjectWebApis.Extentions;
 using LinkDev.Talabat.Application;
 using LinkDev.Talabat.Persistence;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 #region Configure Services
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+                .AddApplicationPart(typeof(Final.TalabatProject.WebApis.Controllers.AssemblyInformation).Assembly); // To add Part of Controllers of the onther layer
 
 builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistence Layer Services
 
 builder.Services.AddApplicationServices();
 
+// Register Swagger
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
 
 #endregion Configure Services
@@ -30,17 +33,17 @@ await app.InitializeStoreContextAsync(); // Update All Pending Migrations and Se
 
 #region Middlewares
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
 
 #endregion Middlewares
 
