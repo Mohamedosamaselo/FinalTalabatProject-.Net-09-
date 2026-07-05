@@ -24,7 +24,9 @@ public class ProductService(IUnitOfWork _unitOfWork, IMapper mapper) : IProductS
 
     public async Task<ProductToReturnDto> GetProductAsync(int id)
     {
-        var product = _unitOfWork.GetRepository<Product, int>().GetAsync(id);
+        var spec = new ProductWithBrandAndCategorySpecifications(id);
+
+        var product = _unitOfWork.GetRepository<Product, int>().GetWithSpecAsync(spec);
 
         var productToReturn = mapper.Map<ProductToReturnDto>(product);
 

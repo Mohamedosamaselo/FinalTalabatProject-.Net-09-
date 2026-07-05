@@ -8,6 +8,17 @@ public class ProductWithBrandAndCategorySpecifications : BaseSpecification<Produ
     // this object that created via this ctor is used for Building the Query that will get AllProducts
     public ProductWithBrandAndCategorySpecifications() : base()
     {
+        AddIncludes();
+    }
+
+    // this object that created via this ctor is used for Building the Query that will getProduct By ID
+    public ProductWithBrandAndCategorySpecifications(int id) : base(id)
+    {
+        AddIncludes();
+    }
+
+    private void AddIncludes()
+    {
         Includes.Add(p => p.Brand!);
         Includes.Add(p => p.Category!);
     }
