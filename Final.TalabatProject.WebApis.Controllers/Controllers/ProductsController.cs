@@ -16,4 +16,16 @@ public class ProductsController(IServiceManager serviceManager) : BaseApiControl
 
         return Ok(products);
     }
+
+    [HttpGet("{id : int}")]  // Get: api/products/id
+    public async Task<ActionResult<ProductToReturnDto>> getProductById(int id)
+    {
+        var product = await serviceManager.productService.GetProductAsync(id);
+
+        if (product is null) // we will handel errors inside Error Module
+
+            return NotFound(new { StatusCode = 400, message = "Product Not Found " });
+
+        return Ok(product);
+    }
 }

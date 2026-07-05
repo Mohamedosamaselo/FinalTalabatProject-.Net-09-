@@ -10,7 +10,7 @@ public class BaseEntityConfigurations<TEntity, TKey> : IEntityTypeConfiguration<
 {
     public virtual void Configure(EntityTypeBuilder<TEntity> builder)
     {
-        builder.Property(Entity => Entity.id).ValueGeneratedOnAdd();
+        builder.Property(Entity => Entity.Id).ValueGeneratedOnAdd();
         //"Don't expect me to provide a value for Id. The database will generate it when the row is inserted."
     }
 }

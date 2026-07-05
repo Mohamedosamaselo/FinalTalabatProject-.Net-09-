@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using LinkDev.Talabat.Application.Abstraction.Services;
 using LinkDev.Talabat.Application.Common.Services;
-using LinkDev.Talabat.Domain.Contracts;
+using LinkDev.Talabat.Domain.Contracts.PersistenceLayer;
 
 namespace LinkDev.Talabat.Application;
 

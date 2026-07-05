@@ -1,7 +1,8 @@
 ﻿using LinkDev.Talabat.Domain.Common;
-using LinkDev.Talabat.Domain.Contracts;
+using LinkDev.Talabat.Domain.Contracts.PersistenceLayer;
 using LinkDev.Talabat.Persistence._Data;
 using LinkDev.Talabat.Persistence.Repositaries;
+using LinkDev.Talabat.Persistence.Repositaries.GenericRepositary;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
