@@ -28,4 +28,18 @@ public class ProductsController(IServiceManager serviceManager) : BaseApiControl
 
         return Ok(product);
     }
+
+    [HttpGet("brands")] // Get : /api/Products/Brands
+    public async Task<ActionResult<IEnumerable<BrandDto>>> GetBrands()
+    {
+        var brands = await serviceManager.productService.GetAllBrandsAsync();
+        return Ok(brands);
+    }
+
+    [HttpGet("Categories")] // Get : api/Products/Categories
+    public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCatgeories()
+    {
+        var Categories = await serviceManager.productService.GetAllCategoriesAsync();
+        return Ok(Categories);
+    }
 }
