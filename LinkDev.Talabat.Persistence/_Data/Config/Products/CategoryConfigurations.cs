@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LinkDev.Talabat.Persistence._Data.Config.Products;
 
-public class CategoryConfigurations : BaseEntityConfigrations<ProductCategory, int>
+public class CategoryConfigurations : BaseAuditableEntityConfigrations<ProductCategory, int>
 {
     public override void Configure(EntityTypeBuilder<ProductCategory> builder)
     {

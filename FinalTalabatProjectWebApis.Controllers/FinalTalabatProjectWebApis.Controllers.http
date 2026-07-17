@@ -1,0 +1,6 @@
+@FinalTalabatProjectWebApis.Controllers_HostAddress = http://localhost:5075
+
+GET {{FinalTalabatProjectWebApis.Controllers_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
