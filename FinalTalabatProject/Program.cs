@@ -14,7 +14,7 @@ builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistenc
 builder.Services.AddApplicationServices();
 
 //  Swagger Configuration
-builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 

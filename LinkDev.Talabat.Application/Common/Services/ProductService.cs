@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
 using LinkDev.Talabat.Application.Abstraction.Models.Products;
 using LinkDev.Talabat.Application.Abstraction.Services;
-using LinkDev.Talabat.Application.Abstraction.Specifications;
 using LinkDev.Talabat.Domain.Contracts.PersistenceLayer;
 using LinkDev.Talabat.Domain.Entities.Products;
 using LinkDev.Talabat.Domain.Specifications.product;
-using LinkDev.Talabat.Persistence;
 
 namespace LinkDev.Talabat.Application.Common.Services;
 
@@ -13,7 +11,7 @@ public class ProductService(IUnitOfWork _unitOfWork, IMapper mapper) : IProductS
 {
     public async Task<IEnumerable<ProductToReturnDto>> GetAllProductsAsync()
     {
-        var spec = new ProductWithBrandAndCategorySpecifications();
+        var spec = new ProductWithBrandAndCategorySpecifications(); // using SpecificationDesign Pattern
 
         var products = _unitOfWork.GetRepository<Product, int>().GetAllWithSpecAsync(spec);
 

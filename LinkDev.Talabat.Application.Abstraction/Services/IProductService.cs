@@ -4,7 +4,7 @@ namespace LinkDev.Talabat.Application.Abstraction.Services;
 
 public interface IProductService
 {
-     Task<IEnumerable<ProductToReturnDto>> GetAllProductsAsync();
+    Task<IEnumerable<ProductToReturnDto>> GetAllProductsAsync();
 
     Task<ProductToReturnDto> GetProductAsync(int id);
 

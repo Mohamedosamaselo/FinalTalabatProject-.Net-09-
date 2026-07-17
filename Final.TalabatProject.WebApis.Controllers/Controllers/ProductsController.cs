@@ -17,7 +17,7 @@ public class ProductsController(IServiceManager serviceManager) : BaseApiControl
         return Ok(products);
     }
 
-    [HttpGet("{id : int}")]  // Get: api/products/id
+    [HttpGet("{id:int}")]  // Get: api/products/id
     public async Task<ActionResult<ProductToReturnDto>> getProductById(int id)
     {
         var product = await serviceManager.productService.GetProductAsync(id);

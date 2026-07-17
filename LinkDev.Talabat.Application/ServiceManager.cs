@@ -7,9 +7,13 @@ namespace LinkDev.Talabat.Application;
 
 public class ServiceManager : IServiceManager
 {
+    #region Properties
+
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly Lazy<IProductService> _productService;
+
+    #endregion Properties
 
     public ServiceManager(IUnitOfWork unitOfWork, IMapper mapper)
     {
