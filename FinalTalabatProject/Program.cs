@@ -10,6 +10,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddPersistenceServices(builder.Configuration);// Add Persistence Layer Services
 
+builder.Services.AddSwaggerGen(); // swagger
+
 #endregion DI Container
 
 var app = builder.Build();
@@ -17,6 +19,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 #region Middlewares
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 
